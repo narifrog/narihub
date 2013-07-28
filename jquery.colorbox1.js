@@ -920,8 +920,7 @@
 			photo = document.createElement('img');
 			
 			
-			$(photo).before('<span id="blank"></span>')
-			.addClass(prefix + 'Photo')
+			$(photo).addClass(prefix + 'Photo')
 			.bind('error',function () {
 				settings.title = false;
 				prep($tag(div, 'Error').html(settings.imgError));
@@ -967,10 +966,10 @@
 					};
 				}
 ///////////////////////////////////////////////////////////////////////////////////////写真拡大時のphoto設定
-
+				
 				photo.style.width = photo.width + 'px';
 				photo.style.height = photo.height + 'px';
-
+				
 				setTimeout(function () { // A pause because Chrome will sometimes report a 0 by 0 size otherwise.
 					prep(photo);
 				}, 1);
@@ -985,6 +984,7 @@
 					prep(status === 'error' ? $tag(div, 'Error').html(settings.xhrError) : $(this).contents());
 				}
 			});
+			
 		}
 	}
 		
@@ -1057,5 +1057,21 @@
 	};
 
 	publicMethod.settings = defaults;
+	
+		var cbox = $('#cboxLoadedContent img');
+	var blank;
+
+ cbox.live("mouseover", function(){
+	$(this).before('<span id="blank"></span>');
+	
+	blank = $('#blank');
+	
+	blank.click(function(){
+          publicMethod.next();
+    });
+	
+	
+});
+	
 
 }(jQuery, document, window));
