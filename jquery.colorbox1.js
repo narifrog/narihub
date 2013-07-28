@@ -1058,10 +1058,12 @@
 
 	publicMethod.settings = defaults;
 	
-		var cbox = $('#cboxLoadedContent img');
+	
+	//画像禁止処理
+	var cboxIMG = $('#cboxLoadedContent img');
 	var blank;
 
- cbox.live("mouseover", function(){
+ 	cboxIMG.live("mouseover", function(){
 	$(this).before('<span id="blank"></span>');
 	
 	blank = $('#blank');
